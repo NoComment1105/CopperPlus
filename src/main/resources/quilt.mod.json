@@ -15,29 +15,23 @@
 		},
 		"intermediate_mappings": "net.fabricmc:intermediary",
 		"entrypoints": {
-			"init": [
-				"io.github.nocomment1105.copperplus.CopperPlus"
-			]
+			"init": "io.github.nocomment1105.copperplus.CopperPlus"
 		},
 		"depends": [
 			{
 				"id": "quilt_loader",
-				"versions": ">=${loader_version}"
+				"versions": ">=0.16.0-"
 			},
 			{
 				"id": "quilted_fabric_api",
-				"versions": "${quilted_fabric_api_version}"
+				"versions": ">=1.0.0-"
 			},
 			{
 				"id": "minecraft",
-				"versions": ">=${minecraft_version}"
+				"versions": ">=1.18.2"
 			}
 		]
 	},
-	"mixin": [
-      "copperplus.mixins.json"
-    ],
-	"minecraft": {
-		"environment": "*"
-	}
+	"mixin": "copperplus.mixins.json"
+
 }

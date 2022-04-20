@@ -28,23 +28,22 @@ repositories {
 
 dependencies {
 	// To change the versions see the gradle.properties file
-	minecraft("com.mojang:minecraft:$minecraft_version")
+	minecraft(libs.minecraft)
 	mappings( loom.layered {
 		officialMojangMappings() // uncomment if you want mojmap too
-		addLayer quiltMappings.mappings( "org.quiltmc:quilt-mappings:$minecraft_version+build.$quilt_mappings:v2" )
+		addLayer quiltMappings.mappings( "org.quiltmc:quilt-mappings:${libs.versions.quilt.mappings.get()}:v2" )
 	})
-	modImplementation("org.quiltmc:quilt-loader:$loader_version")
+	modImplementation(libs.quilt.loader)
 
-	modImplementation("org.quiltmc:qsl:$qsl_version")
-
-	// QSL is not a complete API; you need Quilted Fabric API to fill in the gaps.
-	modImplementation("org.quiltmc.quilted-fabric-api:quilted-fabric-api:$quilted_fapi_version-$minecraft_version")
+	// QSL is not a complete API; You will need Quilted Fabric API to fill in the gaps.
+	// Quilted Fabric API will automatically pull in the correct QSL version.
+	modImplementation libs.quilted.fabric.api
 
 	// Mods to aid development speed
-	modImplementation('maven.modrinth:lithium:mc1.18.2-0.7.9')
-	modImplementation('maven.modrinth:lazydfu:0.1.2')
+	modImplementation("maven.modrinth:lithium:${libs.versions.lithium.get()}")
+	modImplementation("maven.modrinth:lazydfu:${libs.versions.lazydfu.get()}")
 
-	modImplementation("com.terraformersmc:modmenu:$modmenu_version") {
+	modImplementation("com.terraformersmc:modmenu:${libs.versions.modmenu.get()}") {
 		transitive(false)
 	}
 }
@@ -80,17 +79,12 @@ license {
 processResources {
 	inputs.property 'version', version
 	inputs.property 'maven_group', maven_group
-	inputs.property 'loader_version', loader_version
-	inputs.property 'minecraft_version', minecraft_version
 
 	filesMatching('quilt.mod.json') {
-		expand([
+		expand(
 				'version': version,
 				'maven_group': maven_group,
-				'loader_version': loader_version,
-				'minecraft_version': minecraft_version,
-				'quilted_fabric_api_version': quilted_fapi_version
-		])
+		)
 	}
 }
 
@@ -99,13 +93,12 @@ processResources {
 publishing {
 	publications {
 		mavenJava(MavenPublication) {
-			group 'io.github.nocomment1105'
 			from components.java
 		}
 	}
 
 	repositories {
-		 mavenLocal() // Publish to the local maven
+		 //mavenLocal() // Publish to the local maven
 	}
 }
 
