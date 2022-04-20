@@ -1,0 +1,43 @@
+{
+	"schema_version": 1,
+	"quilt_loader": {
+		"group": "${maven_group}",
+		"id": "copperplus",
+		"version": "${version}",
+		"metadata": {
+			"name": "CopperPlus",
+			"description": "Extended copper features and uses!",
+			"contributors": {
+				"NoComment1105": "Owner"
+			},
+			"icon": "assets/example/icon.png",
+            "license": "LGPL-3.0"
+		},
+		"intermediate_mappings": "net.fabricmc:intermediary",
+		"entrypoints": {
+			"init": [
+				"io.github.nocomment1105.copperplus.CopperPlus"
+			]
+		},
+		"depends": [
+			{
+				"id": "quilt_loader",
+				"versions": ">=${loader_version}"
+			},
+			{
+				"id": "quilted_fabric_api",
+				"versions": "${quilted_fabric_api_version}"
+			},
+			{
+				"id": "minecraft",
+				"versions": ">=${minecraft_version}"
+			}
+		]
+	},
+	"mixin": [
+      "copperplus.mixins.json"
+    ],
+	"minecraft": {
+		"environment": "*"
+	}
+}

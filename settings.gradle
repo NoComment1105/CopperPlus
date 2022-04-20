@@ -1,0 +1,19 @@
+pluginManagement {
+	repositories {
+		maven {
+			name 'Fabric'
+			url 'https://maven.fabricmc.net'
+		}
+		maven {
+			name 'Quilt Releases'
+			url 'https://maven.quiltmc.org/repository/release'
+		}
+		maven {
+			name 'Quilt Snapshots'
+			url 'https://maven.quiltmc.org/repository/snapshot'
+		}
+		gradlePluginPortal()
+		mavenCentral()
+	}
+}
+rootProject.name = 'Example'
