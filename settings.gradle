@@ -16,4 +16,5 @@ pluginManagement {
 		mavenCentral()
 	}
 }
-rootProject.name = 'Example'
+
+rootProject.name = 'CopperPlus'

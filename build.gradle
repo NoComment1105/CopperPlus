@@ -1,14 +1,14 @@
 //file:noinspection GradlePackageVersionRange
 plugins {
-	id 'org.quiltmc.loom' version '0.12.+'
-	id 'org.quiltmc.gradle.licenser' version '1.+'
+	alias(libs.plugins.quilt.loom)
+	alias(libs.plugins.quilt.licenser)
 	id 'maven-publish'
 }
 
 def targetJavaVersion = 17
 
 group = project.maven_group
-version = "$project.version+$project.minecraft_version"
+version = "$project.version+${libs.versions.minecraft.get()}"
 archivesBaseName = project.archives_base_name
 
 repositories {
@@ -30,8 +30,6 @@ dependencies {
 	// To change the versions see the gradle.properties file
 	minecraft(libs.minecraft)
 	mappings(loom.layered {
-		// This mapping configuration uses Quilt Mappings as a primary mapping and Mojmap as a fallback
-		officialMojangMappings()
 		addLayer quiltMappings.mappings( "org.quiltmc:quilt-mappings:${libs.versions.quilt.mappings.get()}:v2" )
 	})
 
@@ -42,8 +40,8 @@ dependencies {
 	modImplementation(libs.quilted.fabric.api)
 
 	// Mods to aid development speed
-//	modRuntimeOnly("maven.modrinth:lithium:mc1.18.2-0.7.9")
-//	modRuntimeOnly("maven.modrinth:lazydfu:0.1.2")
+	modRuntimeOnly("maven.modrinth:gvQqBUqZ:${libs.versions.lithium.get()}") // Lithium
+	modRuntimeOnly("maven.modrinth:hvFnDODi:${libs.versions.lazydfu.get()}") // LazyDFU
 
 	modImplementation("com.terraformersmc:modmenu:${libs.versions.modmenu.get()}") {
 		transitive(false)
@@ -107,4 +105,8 @@ publishing {
 runClient {
 	// Export mixin altered classes to the build output folder and set memory limit
 	jvmArgs('-Dmixin.debug.export=true', '-Xmx1536m')
+}
+
+quiltflower {
+	addToRuntimeClasspath.set(true)
 }

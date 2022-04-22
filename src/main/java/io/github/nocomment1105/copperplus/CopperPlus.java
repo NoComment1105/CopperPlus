@@ -23,11 +23,12 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class CopperPlus implements ModInitializer {
-	public static final String MOD_ID = "copperplus";
-	public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
+
+	public static final String MODID = "copperplus";
+	public static final Logger LOGGER = LoggerFactory.getLogger("CopperPlus");
 
 	@Override
 	public void onInitialize(ModContainer mod) {
-		LOGGER.info("Hello world");
+
 	}
 }
