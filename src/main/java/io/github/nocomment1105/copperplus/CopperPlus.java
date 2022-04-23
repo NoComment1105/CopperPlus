@@ -17,6 +17,8 @@
 
 package io.github.nocomment1105.copperplus;
 
+import io.github.nocomment1105.copperplus.registry.CopperPlusRegistry;
+import net.minecraft.util.Identifier;
 import org.quiltmc.loader.api.ModContainer;
 import org.quiltmc.qsl.base.api.entrypoint.ModInitializer;
 import org.slf4j.Logger;
@@ -29,6 +31,24 @@ public class CopperPlus implements ModInitializer {
 
 	@Override
 	public void onInitialize(ModContainer mod) {
+		CopperPlusRegistry.init();
+	}
 
+	/**
+	 * Create an identifier with the mod ID as the namespace
+	 * @param path The identifier's path
+	 * @return the identifer
+	 */
+	public static Identifier id(String path) {
+		return new Identifier(MODID, path);
+	}
+
+	/**
+	 * Create a string with the mod ID as the namespace
+	 * @param path The identifier's path
+	 * @return the identifer
+	 */
+	public static String stringId(String path) {
+		return MODID + ":" + path;
 	}
 }

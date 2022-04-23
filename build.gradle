@@ -14,7 +14,7 @@ archivesBaseName = project.archives_base_name
 repositories {
 	maven {
 		name = 'Modrinth'
-		url = uri('https://api.modrinth.com/maven')
+		url = 'https://api.modrinth.com/maven'
 		content {
 			includeGroup 'maven.modrinth'
 		}
@@ -40,8 +40,8 @@ dependencies {
 	modImplementation(libs.quilted.fabric.api)
 
 	// Mods to aid development speed
-	modRuntimeOnly("maven.modrinth:gvQqBUqZ:${libs.versions.lithium.get()}") // Lithium
-	modRuntimeOnly("maven.modrinth:hvFnDODi:${libs.versions.lazydfu.get()}") // LazyDFU
+//	modRuntimeOnly("maven.modrinth:gvQqBUqZ:${libs.versions.lithium.get()}") // Lithium
+//	modRuntimeOnly("maven.modrinth:hvFnDODi:${libs.versions.lazydfu.get()}") // LazyDFU
 
 	modImplementation("com.terraformersmc:modmenu:${libs.versions.modmenu.get()}") {
 		transitive(false)
@@ -78,12 +78,10 @@ license {
 
 processResources {
 	inputs.property 'version', version
-	inputs.property 'maven_group', maven_group
 
 	filesMatching('quilt.mod.json') {
 		expand(
 				'version': version,
-				'maven_group': maven_group,
 		)
 	}
 }
