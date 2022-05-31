@@ -37,7 +37,7 @@ public class CopperPlus implements ModInitializer {
 	/**
 	 * Create an identifier with the mod ID as the namespace
 	 * @param path The identifier's path
-	 * @return the identifer
+	 * @return the identifier
 	 */
 	public static Identifier id(String path) {
 		return new Identifier(MODID, path);
@@ -46,7 +46,7 @@ public class CopperPlus implements ModInitializer {
 	/**
 	 * Create a string with the mod ID as the namespace
 	 * @param path The identifier's path
-	 * @return the identifer
+	 * @return the identifier
 	 */
 	public static String stringId(String path) {
 		return MODID + ":" + path;
